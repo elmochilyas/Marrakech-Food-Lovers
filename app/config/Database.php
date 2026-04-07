@@ -1,6 +1,4 @@
 <?php
-
-
 class Database {
 
     private static ?PDO $connection = null;
@@ -28,24 +26,8 @@ class Database {
             } catch (PDOException $e) {
                 die("Connection failed: " . $e->getMessage());
             }
-            
         }
-        return self::$connection;
-       
+        return self::$connection;   
     }
-   
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
