@@ -8,7 +8,7 @@ require_once 'config/Database.php';
 
 // 3. Inclure les controllers
 require_once 'controllers/UserController.php';
-require_once 'controllers/RecipeController.php';
+// require_once 'controllers/RecipeController.php';
 
 // 4. Lire l'URL demandée
 // Ex: /recettes/create  =>  $url = ['recettes', 'create']
