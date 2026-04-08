@@ -79,18 +79,6 @@ require_once __DIR__ . '/../layout/header.php';
                 >
             </div>
 
-            <!-- Password Confirmation Field -->
-            <div class="form-group">
-                <label for="passwordConfirm">Confirm Password</label>
-                <input
-                    type="password"
-                    id="passwordConfirm"
-                    name="password_confirm"
-                    class="form-input"
-                    placeholder="Re-enter your password"
-                    required
-                >
-            </div>
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary btn-block">
