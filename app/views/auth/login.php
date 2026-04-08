@@ -10,11 +10,6 @@ require_once __DIR__ . '/../layout/header.php';
     <div class="auth-card">
         <h2>Sign In to Your Account</h2>
         <p class="auth-subtitle">Welcome back to our food community</p>
-
-        <!-- ============================================
-             ERROR MESSAGES SECTION
-             Same as registration form — displays backend validation errors
-             ============================================ -->
         <?php if (!empty($errors)): ?>
             <div class="alert alert-error">
                 <h4>⚠️ Login Failed</h4>
@@ -26,20 +21,12 @@ require_once __DIR__ . '/../layout/header.php';
             </div>
         <?php endif; ?>
 
-        <!-- ============================================
-             SUCCESS MESSAGE
-             Shows if login was successful (unlikely but possible)
-             ============================================ -->
         <?php if (!empty($success)): ?>
             <div class="alert alert-success">
                 ✅ <?php echo htmlspecialchars($success); ?>
             </div>
         <?php endif; ?>
 
-        <!-- ============================================
-             LOGIN FORM
-             Submits to /login endpoint via POST
-             ============================================ -->
         <form id="loginForm" action="/login" method="POST" class="auth-form" novalidate>
 
             <!-- EMAIL FIELD -->
@@ -73,24 +60,6 @@ require_once __DIR__ . '/../layout/header.php';
                     autocomplete="current-password"
                 >
 
-            </div>
-
-            <!-- REMEMBER ME CHECKBOX (Optional feature) -->
-            <div class="form-group form-group-checkbox">
-                <label class="checkbox-label" for="rememberMe">
-                    <input
-                        type="checkbox"
-                        id="rememberMe"
-                        name="remember_me"
-                        value="1"
-                    >
-                    <span>Remember me for 30 days</span>
-                </label>
-                <!-- 
-                    This is optional. Backend can use this to:
-                    - Set a longer cookie lifetime (30 days instead of session)
-                    - Or set a "remember token" in DB for persistent login
-                -->
             </div>
 
             <!-- SUBMIT BUTTON -->
