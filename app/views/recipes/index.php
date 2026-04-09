@@ -6,7 +6,7 @@ require_once __DIR__ . '/../layout/header.php';
 
 <div class="page-header">
     <h2>My Recipes</h2>
-    <a href="/recettes/create" class="btn btn-primary">+ Add New Recipe</a>
+    <a href="/Marrakech%20Food%20Lovers/recettes/create" class="btn btn-primary">+ Add New Recipe</a>
 </div>
 
 <?php if (isset($_SESSION['flash'])): ?>
@@ -20,7 +20,7 @@ require_once __DIR__ . '/../layout/header.php';
     <div class="empty-state">
         <h3>No recipes yet</h3>
         <p>Start by creating your first recipe!</p>
-        <a href="/recettes/create" class="btn btn-primary">Create Recipe</a>
+        <a href="/Marrakech%20Food%20Lovers/recettes/create" class="btn btn-primary">Create Recipe</a>
     </div>
 <?php else: ?>
     <div class="recipes-grid">

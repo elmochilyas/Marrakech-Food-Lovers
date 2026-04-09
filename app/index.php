@@ -5,10 +5,14 @@ session_start();
 
 // 2. Inclure la connexion à la BDD
 require_once 'config/Database.php';
+$db = Database::getConnection();
 
 // 3. Inclure les controllers
 require_once 'controllers/UserController.php';
-// require_once 'controllers/RecipeController.php';
+require_once 'controllers/RecipeController.php';
+
+// 4. Inclure les models
+require_once 'models/user.php';
 
 // 4. Lire l'URL demandée
 // Ex: /recettes/create  =>  $url = ['recettes', 'create']
@@ -21,7 +25,7 @@ $action     = isset($url[1]) && $url[1] !== '' ? $url[1] : 'index';
 // 5. Router : appelle le bon controller et la bonne méthode
 switch ($controller) {
     case 'users':
-        $ctrl = new UserController();
+        $ctrl = new UserController($db);
         if ($action === 'register') $ctrl->register();
         elseif ($action === 'login')    $ctrl->login();
         elseif ($action === 'logout')   $ctrl->logout();
@@ -37,7 +41,26 @@ switch ($controller) {
         break;
 
     default:
-        // Page d'accueil ou 404
-        echo "Bienvenue sur Marrakech Food Lovers";
+        ?>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Marrakech Food Lovers</title>
+            <style>
+                body { font-family: sans-serif; padding: 50px; text-align: center; }
+                nav a { margin: 0 15px; text-decoration: none; color: #333; }
+                nav a:hover { text-decoration: underline; }
+            </style>
+        </head>
+        <body>
+            <h1>Bienvenue sur Marrakech Food Lovers</h1>
+            <nav>
+                <a href="users/login">Connexion</a>
+                <a href="users/register">Inscription</a>
+                <a href="recettes">Recettes</a>
+            </nav>
+        </body>
+        </html>
+        <?php
         break;
 }

@@ -27,7 +27,7 @@ require_once __DIR__ . '/../layout/header.php';
             </div>
         <?php endif; ?>
 
-        <form id="loginForm" action="/login" method="POST" class="auth-form" novalidate>
+        <form id="loginForm" action="" method="POST" class="auth-form" novalidate>
 
             <!-- EMAIL FIELD -->
             <div class="form-group">
@@ -71,7 +71,7 @@ require_once __DIR__ . '/../layout/header.php';
 
         <!-- LOGIN FOOTER - Link to registration -->
         <div class="auth-footer">
-            <p>Don't have an account? <a href="/register" class="link">Register here</a></p>
+            <p>Don't have an account? <a href="/Marrakech%20Food%20Lovers/users/register" class="link">Register here</a></p>
             <p><a href="#" class="link link-small">Forgot password?</a></p>
             <!-- Note: "Forgot password" is a bonus feature, not required for MVP -->
         </div>

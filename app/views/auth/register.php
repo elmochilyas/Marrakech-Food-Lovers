@@ -31,7 +31,7 @@ require_once __DIR__ . '/../layout/header.php';
         <?php endif; ?>
 
         <!-- Registration Form -->
-        <form id="registrationForm" action="/register" method="POST" class="auth-form" novalidate>
+        <form id="registrationForm" action="" method="POST" class="auth-form" novalidate>
 
             <!-- Username Field -->
             <div class="form-group">
