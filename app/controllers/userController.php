@@ -70,7 +70,7 @@ class UserController
                         'message' => 'Account created successfully! Please log in with your credentials.'
                     ];
 
-                    header('Location: /login');
+                    header('Location: /Marrakech%20Food%20Lovers/users/login');
                     exit();
                 } else {
                     $errors[] = "An error occurred while creating your account. Please try again.";
@@ -127,7 +127,7 @@ class UserController
                         'message' => 'Welcome back, ' . htmlspecialchars($user->getUsername()) . '!'
                     ];
 
-                    header('Location: /recipes');
+                    header('Location: /Marrakech%20Food%20Lovers/recettes');
                     exit();
                 } else {
                     $errors[] = "Invalid email address or password.";
@@ -148,7 +148,7 @@ class UserController
             setcookie('remember_token', '', time() - 3600, '/');
         }
 
-        header('Location: /');
+        header('Location: /Marrakech%20Food%20Lovers/');
         exit();
     }
 }

@@ -5,7 +5,14 @@ session_start();
 
 
 require_once 'config/Database.php';
+$db = Database::getConnection();
 
+// 3. Inclure les controllers
+require_once 'controllers/UserController.php';
+require_once 'controllers/RecipeController.php';
+
+// 4. Inclure les models
+require_once 'models/user.php';
 
 //require_once 'controllers/UserController.php';
 
@@ -18,7 +25,7 @@ $action     = isset($url[1]) && $url[1] !== '' ? $url[1] : 'index';
 
 switch ($controller) {
     case 'users':
-        $ctrl = new UserController();
+        $ctrl = new UserController($db);
         if ($action === 'register') $ctrl->register();
         elseif ($action === 'login')    $ctrl->login();
         elseif ($action === 'logout')   $ctrl->logout();
@@ -34,6 +41,27 @@ switch ($controller) {
         break;
 
     default:
+        ?>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Marrakech Food Lovers</title>
+            <style>
+                body { font-family: sans-serif; padding: 50px; text-align: center; }
+                nav a { margin: 0 15px; text-decoration: none; color: #333; }
+                nav a:hover { text-decoration: underline; }
+            </style>
+        </head>
+        <body>
+            <h1>Bienvenue sur Marrakech Food Lovers</h1>
+            <nav>
+                <a href="users/login">Connexion</a>
+                <a href="users/register">Inscription</a>
+                <a href="recettes">Recettes</a>
+            </nav>
+        </body>
+        </html>
+        <?php
     
         echo "Bienvenue sur Marrakech Food Lovers";
         break;

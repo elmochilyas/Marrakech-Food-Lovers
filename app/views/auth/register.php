@@ -31,7 +31,7 @@ require_once __DIR__ . '/../layout/header.php';
         <?php endif; ?>
 
         <!-- Registration Form -->
-        <form id="registrationForm" action="/register" method="POST" class="auth-form" novalidate>
+        <form id="registrationForm" action="" method="POST" class="auth-form" novalidate>
 
             <!-- Username Field -->
             <div class="form-group">
@@ -93,90 +93,6 @@ require_once __DIR__ . '/../layout/header.php';
         </div>
     </div>
 </div>
-
-<!-- Validation Script -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('registrationForm');
-    const usernameInput = document.getElementById('username');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const confirmInput = document.getElementById('passwordConfirm');
-
-    // Validation functions
-    function validateUsername() {
-        const length = usernameInput.value.length >= 3;
-        updateHint('usernameHint', 'length', length);
-        return length;
-    }
-
-    function validateEmail() {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const valid = emailRegex.test(emailInput.value);
-        updateHint('emailHint', 'format', valid);
-        return valid;
-    }
-
-    function validatePassword() {
-        const value = passwordInput.value;
-        const length = value.length >= 8;
-        const uppercase = /[A-Z]/.test(value);
-        const number = /[0-9]/.test(value);
-
-        updateHint('passwordHint', 'length', length);
-        updateHint('passwordHint', 'uppercase', uppercase);
-        updateHint('passwordHint', 'number', number);
-
-        return length && uppercase && number;
-    }
-
-    function validateConfirm() {
-        const match = passwordInput.value === confirmInput.value && passwordInput.value.length > 0;
-        updateHint('confirmHint', 'match', match);
-        return match;
-    }
-
-    function updateHint(containerId, rule, isValid) {
-        const container = document.getElementById(containerId);
-        const hint = container.querySelector(`[data-rule="${rule}"]`);
-        if (hint) {
-            const icon = hint.querySelector('.hint-icon');
-            if (isValid) {
-                hint.classList.add('valid');
-                hint.classList.remove('invalid');
-                icon.textContent = '✅';
-            } else {
-                hint.classList.add('invalid');
-                hint.classList.remove('valid');
-                icon.textContent = '❌';
-            }
-        }
-    }
-
-    // Event listeners for real-time validation
-    usernameInput.addEventListener('input', validateUsername);
-    emailInput.addEventListener('input', validateEmail);
-    passwordInput.addEventListener('input', () => {
-        validatePassword();
-        validateConfirm(); // Re-check confirm when password changes
-    });
-    confirmInput.addEventListener('input', validateConfirm);
-
-    // Form submission
-    form.addEventListener('submit', function(e) {
-        // Validate all fields before submission
-        const usernameValid = validateUsername();
-        const emailValid = validateEmail();
-        const passwordValid = validatePassword();
-        const confirmValid = validateConfirm();
-
-        if (!usernameValid || !emailValid || !passwordValid || !confirmValid) {
-            e.preventDefault();
-            alert('Please fix the validation errors above.');
-        }
-    });
-});
-</script>
 
 <?php
 // Include footer
