@@ -1,24 +1,21 @@
 <?php
 
-// 1. Démarrer la session (pour login/logout plus tard)
+
 session_start();
 
-// 2. Inclure la connexion à la BDD
+
 require_once 'config/Database.php';
 
-// 3. Inclure les controllers
-require_once 'controllers/UserController.php';
-// require_once 'controllers/RecipeController.php';
 
-// 4. Lire l'URL demandée
-// Ex: /recettes/create  =>  $url = ['recettes', 'create']
+//require_once 'controllers/UserController.php';
+
 $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 $url = explode('/', $url);
 
 $controller = isset($url[0]) && $url[0] !== '' ? $url[0] : 'home';
 $action     = isset($url[1]) && $url[1] !== '' ? $url[1] : 'index';
 
-// 5. Router : appelle le bon controller et la bonne méthode
+
 switch ($controller) {
     case 'users':
         $ctrl = new UserController();
@@ -37,7 +34,7 @@ switch ($controller) {
         break;
 
     default:
-        // Page d'accueil ou 404
+    
         echo "Bienvenue sur Marrakech Food Lovers";
         break;
 }
