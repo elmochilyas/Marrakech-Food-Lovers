@@ -13,8 +13,8 @@ require_once 'controllers/RecipeController.php';
 
 // 4. Inclure les models
 require_once 'models/user.php';
-
-//require_once 'controllers/UserController.php';
+require_once 'models/Recipe.php';
+require_once 'models/Category.php';
 
 $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 $url = explode('/', $url);
@@ -33,10 +33,13 @@ switch ($controller) {
 
     case 'recettes':
         $ctrl = new RecipeController();
-        if ($action === 'index')   $ctrl->index();
+        if ($action === 'index')   $ctrl->indexAll();
+        elseif ($action === 'all')  $ctrl->indexAll();
+        elseif ($action === 'my')   $ctrl->index();
         elseif ($action === 'create') $ctrl->create();
         elseif ($action === 'store')  $ctrl->store();
         elseif ($action === 'edit')   $ctrl->edit($url[2] ?? null);
+        elseif ($action === 'update') $ctrl->update($url[2] ?? null);
         elseif ($action === 'delete') $ctrl->delete($url[2] ?? null);
         break;
 

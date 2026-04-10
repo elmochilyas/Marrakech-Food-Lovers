@@ -13,7 +13,9 @@
                 <h1><a href="/Marrakech%20Food%20Lovers/">🍽️ Marrakech Food Lovers</a></h1>
             </div>
             <nav class="navbar-nav">
+                <a href="/Marrakech%20Food%20Lovers/recettes" class="nav-link">Toutes les recettes</a>
                 <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="/Marrakech%20Food%20Lovers/recettes/my" class="nav-link">Mes recettes</a>
                     <span class="user-welcome">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
                     <a href="/Marrakech%20Food%20Lovers/users/logout" class="nav-link">Logout</a>
                 <?php else: ?>
